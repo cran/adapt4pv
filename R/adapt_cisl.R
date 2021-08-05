@@ -11,22 +11,22 @@
 #' \code{dfmax} and \code{nlambda} through parameters \code{cisl_dfmax} and
 #' \code{cisl_nlambda}.
 #' In addition, the \code{betaPos} parameter is set to FALSE in \code{cisl}.
-#' For each covariate \eqn{i}, 100 values of the CISL quantity \eqn{\tau_i}
+#' For each covariate \eqn{i}, \code{cisl_nB} values of the CISL quantity \eqn{\tau_i}
 #' are estimated.
 #' The adaptive weight for a given covariate \eqn{i} is defined by
-#' \deqn{w_i = 1- 1/100 \sum_b=1, .., 100 indicator [ \tau^b_i >0  ]}
+#' \deqn{w_i = 1- 1/cisl_nB \sum_{b=1, .., cisl_nB} 1 [ \tau^b_i >0  ]}
 #' If \eqn{\tau_i} is the null vector, the associated adaptve weights in infinty.
 #' If \eqn{\tau_i} is always positive, rather than "forcing" the variable into
-#' the model, we set the corresponding adaptive weight to \eqn{1/100}.
+#' the model, we set the corresponding adaptive weight to 1/\code{cisl_nB}.
 #'
 #' @param x Input matrix, of dimension nobs x nvars. Each row is an observation
 #' vector. Can be in sparse matrix format (inherit from class
 #' \code{"sparseMatrix"} as in package \code{Matrix}).
 #' @param y Binary response variable, numeric.
-#' @param cisl_nB \code{nB} option in \code{cisl} function
-#' @param cisl_dfmax \code{dfmax} option in \code{cisl} function
-#' @param cisl_nlambda \code{nlambda} option in \code{cisl} function
-#' @param cisl_ncore \code{ncore} option in \code{cisl} function
+#' @param cisl_nB \code{nB} option in \code{cisl} function. Default is 100.
+#' @param cisl_dfmax \code{dfmax} option in \code{cisl} function. Default is 50.
+#' @param cisl_nlambda \code{nlambda} option in \code{cisl} function. Default is 250.
+#' @param cisl_ncore \code{ncore} option in \code{cisl} function. Default is 1.
 #' @param maxp A limit on how many relaxed coefficients are allowed.
 #' Default is 50, in \code{glmnet} option default is 'n-3', where 'n' is the sample size.
 #' @param path Since \code{glmnet} does not do stepsize optimization, the Newton

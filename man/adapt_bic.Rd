@@ -64,8 +64,8 @@ Depends on the \code{glmnet} and \code{relax.glmnet} function from the package
 }
 \details{
 The adaptive weight for a given covariate i is defined by
-\deqn{w_i = 1/|\beta^BIC_i|^\gamma} where
- \eqn{\beta^BIC_i} is the NON PENALIZED regression coefficient
+\deqn{w_i = 1/|\beta^{BIC}_i|^\gamma} where
+ \eqn{\beta^{BIC}_i} is the NON PENALIZED regression coefficient
  associated to covariate \eqn{i} obtained with lasso-bic.
 }
 \examples{

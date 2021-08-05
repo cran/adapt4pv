@@ -52,7 +52,7 @@
 #'
 #' @author Ismail Ahmed
 #' @references Ahmed, I., Pariente, A., & Tubert-Bitter, P. (2018). "Class-imbalanced subsampling lasso algorithm for discovering adverse drug reactions".
-#' \emph{Statistical Methods in Medical Research}. 27(3), 785–797, \url{https://doi.org/10.1177/0962280216643116}
+#' \emph{Statistical Methods in Medical Research}. 27(3), 785–797, \doi{10.1177/0962280216643116}
 #'
 #' @export cisl
 

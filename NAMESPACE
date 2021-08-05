@@ -3,7 +3,6 @@
 export(adapt_bic)
 export(adapt_cisl)
 export(adapt_cv)
-export(adapt_ridge)
 export(adapt_univ)
 export(cisl)
 export(est_ps_bic)

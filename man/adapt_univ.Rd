@@ -13,6 +13,7 @@ adapt_univ(
   path = TRUE,
   nfolds = 5,
   foldid = NULL,
+  type_cv = "proper",
   betaPos = TRUE,
   ...
 )
@@ -52,12 +53,17 @@ An optional vector of values between 1 and \code{nfolds}
 identifying what fold each observation is in. If supplied, \code{nfolds} can
 be missing.}
 
+\item{type_cv}{Used only if \code{criterion} = "cv", ignored if \code{criterion} = "bic".
+Character, indicates which implementation of cross-validation is performed for the adaptive lasso:  a "naive" one,
+where adaptive weights obtained on the full data are used, and a "proper" one, where adaptive weights are calculated for each training sets.
+Could be either "naive" or "proper".
+Default is "proper".}
+
 \item{betaPos}{Should the covariates selected by the procedure be
 positively associated with the outcome ? Default is \code{TRUE}.}
 
-\item{\dots}{Other arguments that can be passed to \code{glmnet}
-from package \code{glmnet} other than \code{penalty.factor},
-\code{family}, \code{maxp} and \code{path}.}
+\item{\dots}{Other arguments that can be passed to \code{glmnet} from package
+\code{glmnet} other than \code{family}, \code{maxp}, \code{standardize}, \code{intercept}}
 }
 \value{
 An object with S3 class \code{"adaptive"}.
@@ -83,15 +89,17 @@ model that minimzes the BIC in the adaptive lasso.}
 Compute odd-ratios between each covariate of \code{x} and \code{y} then derived
 adaptive weights to incorporate in an adaptive lasso.
 BIC or cross-validation could either be used for the adaptive lasso for variable selection.
+Two options for implementing cross-validation for the adaptive lasso are possible through the \code{type_cv} parameter (see bellow).
 Can deal with very large sparse data matrices.
 Intended for binary reponse only (option \code{family = "binomial"} is forced).
+The cross-validation criterion used is deviance.
 Depends on the \code{glmnet} and \code{relax.glmnet} function from the package
 \code{glmnet}.
 }
 \details{
 The adaptive weight for a given covariate i is defined by
-\deqn{w_i = 1/|\beta^univ_i|^\gamma} where
- \eqn{\beta^univ_i = log(OR_i)}, with
+\deqn{w_i = 1/|\beta^{univ}_i|^\gamma} where
+ \eqn{\beta^{univ}_i = log(OR_i)}, with
  \eqn{OR_i} is the odd-ratio associated to covariate \eqn{i}
  with the outcome.
 }

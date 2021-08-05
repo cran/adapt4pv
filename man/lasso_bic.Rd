@@ -25,7 +25,7 @@ of lambda values (with a zero attached to the end). Default is \code{path=TRUE}.
 positively associated with the outcome ? Default is \code{TRUE}.}
 
 \item{\dots}{Other arguments that can be passed to \code{glmnet} from package
-\code{glmnet} other than \code{penalty.factor}, \code{family}, \code{maxp}
+\code{glmnet} other than \code{family}, \code{maxp}
 and \code{path}.}
 }
 \value{

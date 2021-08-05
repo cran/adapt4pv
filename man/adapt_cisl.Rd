@@ -24,13 +24,13 @@ vector. Can be in sparse matrix format (inherit from class
 
 \item{y}{Binary response variable, numeric.}
 
-\item{cisl_nB}{\code{nB} option in \code{cisl} function}
+\item{cisl_nB}{\code{nB} option in \code{cisl} function. Default is 100.}
 
-\item{cisl_dfmax}{\code{dfmax} option in \code{cisl} function}
+\item{cisl_dfmax}{\code{dfmax} option in \code{cisl} function. Default is 50.}
 
-\item{cisl_nlambda}{\code{nlambda} option in \code{cisl} function}
+\item{cisl_nlambda}{\code{nlambda} option in \code{cisl} function. Default is 250.}
 
-\item{cisl_ncore}{\code{ncore} option in \code{cisl} function}
+\item{cisl_ncore}{\code{ncore} option in \code{cisl} function. Default is 1.}
 
 \item{maxp}{A limit on how many relaxed coefficients are allowed.
 Default is 50, in \code{glmnet} option default is 'n-3', where 'n' is the sample size.}
@@ -80,13 +80,13 @@ The CISL procedureis first implemented with its default value except for
 \code{dfmax} and \code{nlambda} through parameters \code{cisl_dfmax} and
 \code{cisl_nlambda}.
 In addition, the \code{betaPos} parameter is set to FALSE in \code{cisl}.
-For each covariate \eqn{i}, 100 values of the CISL quantity \eqn{\tau_i}
+For each covariate \eqn{i}, \code{cisl_nB} values of the CISL quantity \eqn{\tau_i}
 are estimated.
 The adaptive weight for a given covariate \eqn{i} is defined by
-\deqn{w_i = 1- 1/100 \sum_b=1, .., 100 indicator [ \tau^b_i >0  ]}
+\deqn{w_i = 1- 1/cisl_nB \sum_{b=1, .., cisl_nB} 1 [ \tau^b_i >0  ]}
 If \eqn{\tau_i} is the null vector, the associated adaptve weights in infinty.
 If \eqn{\tau_i} is always positive, rather than "forcing" the variable into
-the model, we set the corresponding adaptive weight to \eqn{1/100}.
+the model, we set the corresponding adaptive weight to 1/\code{cisl_nB}.
 }
 \examples{
 

@@ -10,8 +10,8 @@
 #' \code{glmnet}.
 #'
 #' The adaptive weight for a given covariate i is defined by
-#' \deqn{w_i = 1/|\beta^BIC_i|^\gamma} where
-#'  \eqn{\beta^BIC_i} is the NON PENALIZED regression coefficient
+#' \deqn{w_i = 1/|\beta^{BIC}_i|^\gamma} where
+#'  \eqn{\beta^{BIC}_i} is the NON PENALIZED regression coefficient
 #'  associated to covariate \eqn{i} obtained with lasso-bic.
 #'
 #' @param x Input matrix, of dimension nobs x nvars. Each row is an observation

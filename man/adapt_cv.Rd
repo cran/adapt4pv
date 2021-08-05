@@ -4,7 +4,16 @@
 \alias{adapt_cv}
 \title{fit an adaptive lasso with adaptive weights derived from lasso-cv}
 \usage{
-adapt_cv(x, y, gamma = 1, nfolds = 5, foldid = NULL, betaPos = TRUE, ...)
+adapt_cv(
+  x,
+  y,
+  gamma = 1,
+  nfolds = 5,
+  foldid = NULL,
+  type_cv = "proper",
+  betaPos = TRUE,
+  ...
+)
 }
 \arguments{
 \item{x}{Input matrix, of dimension nobs x nvars. Each row is an observation
@@ -24,11 +33,16 @@ large datasets. Smallest value allowable is \code{nfolds=3}.}
 identifying what fold each observation is in. If supplied, \code{nfolds} can
 be missing.}
 
+\item{type_cv}{Character, indicates which implementation of cross-validation is performed for the adaptive lasso:  a "naive" one,
+where adaptive weights obtained on the full data are used, and a "proper" one, where adaptive weights are calculated for each training sets.
+Could be either "naive" or "proper".
+Default is "proper".}
+
 \item{betaPos}{Should the covariates selected by the procedure be
 positively associated with the outcome ? Default is \code{TRUE}.}
 
-\item{\dots}{Other arguments that can be passed to \code{cv.glmnet}  from package \code{glmnet} other than \code{nfolds}, \code{foldid},
-\code{penalty.factor} and \code{family}.}
+\item{\dots}{Other arguments that can be passed to \code{glmnet}  from package \code{glmnet} other than \code{nfolds}, \code{foldid},
+\code{penalty.factor}, \code{standardize}, \code{intercept}  and \code{family}.}
 }
 \value{
 An object with S3 class \code{"adaptive"}.
@@ -50,17 +64,18 @@ Covariates are ordering according to magnitude of their regression
 coefficients absolute value in the adaptive lasso.}
 }
 \description{
-Fit a first lasso regression with cross-validation to determine adaptive weights,
-then run an adaptive lasso with this penalty weighting.
-Cross-validation is used for the adaptive lasso for variable selection.
+Fit a first lasso regression with cross-validation to determine adaptive weights.
+Run a cross-validation to determine an optimal lambda.
+Two options for implementing cross-validation for the adaptive lasso are possible through the \code{type_cv} parameter (see bellow).
 Can deal with very large sparse data matrices.
 Intended for binary reponse only (option \code{family = "binomial"} is forced).
+The cross-validation criterion used is deviance.
 Depends on the \code{cv.glmnet} function from the package \code{glmnet}.
 }
 \details{
 The adaptive weight for a given covariate i is defined by
-\deqn{w_i = 1/|\beta^CV_i|^\gamma} where
-\eqn{\beta^CV_i} is the PENALIZED regression coefficient associated
+\deqn{w_i = 1/|\beta^{CV}_i|^\gamma} where
+\eqn{\beta^{CV}_i} is the PENALIZED regression coefficient associated
 to covariate \eqn{i} obtained with cross-validation.
 }
 \examples{

@@ -31,7 +31,7 @@
 #' @param betaPos Should the covariates selected by the procedure be
 #' positively associated with the outcome ? Default is \code{TRUE}.
 #' @param \dots Other arguments that can be passed to \code{glmnet} from package
-#' \code{glmnet} other than \code{penalty.factor}, \code{family}, \code{maxp}
+#' \code{glmnet} other than \code{family}, \code{maxp}
 #' and \code{path}.
 #'
 #' @return An object with S3 class \code{"log.lasso"}.

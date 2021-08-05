@@ -48,7 +48,7 @@
 #'
 #' @references Schneeweiss, S., Rassen, J. A., Glynn, R. J., Avorn, J., Mogun, H., Brookhart, M. A. (2009).
 #' "High-dimensional propensity score adjustment in studies of treatment effects using health care claims data".
-#' \emph{Epidemiology}. 20, 512–522, \url{https://doi.org/10.1097/EDE.0b013e3181a663cc}
+#' \emph{Epidemiology}. 20, 512–522, \doi{10.1097/EDE.0b013e3181a663cc}
 #'
 #' @export est_ps_hdps
 

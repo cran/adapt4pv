@@ -52,7 +52,7 @@
 #' \email{emeline.courtois@@inserm.fr}
 #'
 #' @references Sabourin, J. A., Valdar, W., & Nobel, A. B. (2015). "A permutation approach for selecting the penalty parameter in penalized model selection".
-#' \emph{Biometrics}. 71(4), 1185–1194, \url{https://doi.org/10.1111/biom.12359}
+#' \emph{Biometrics}. 71(4), 1185–1194, \doi{10.1111/biom.12359}
 #'
 #' @export lasso_perm
 

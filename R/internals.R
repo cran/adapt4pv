@@ -154,3 +154,61 @@ try_bis <- function(x, classe = "numeric"){
   return(res)
 }
 
+
+
+standardize <- function(X){
+  #Internal function for standardization
+  #
+  #Given a data matrix X, perform standardization (different from scale, use the biase estimation of the standard deviation)
+  #
+  #
+  #X: data matrix, could be sparse
+  #Return a list xith elements
+  #Xs : X matrixstandardized
+  #X_Mean and X_sd : mean and sd of X's columns
+
+  X_centered <- apply(X, 2, function(x) x - mean(x))
+  Xs <- apply(X_centered, 2, function(x) x/sqrt(sum(x^2)/nrow(X)))
+
+  X_mean <- colMeans(X)
+  X_sd <- apply(X_centered, 2, function(x) sqrt(sum(x^2) / nrow(X)))
+
+  return(list(Xs = Xs, X_mean = X_mean, X_sd = X_sd))
+}
+
+
+cv.lognet.short <- function(pred.matrix, yy){
+  #Internal function for prediction error for CV
+  #
+  #Given a the binary outcome yy and the prediction pred.matrix (one column corresponding to a lambda value) return the deviance
+  #Code from cv.lognet from glmnet package
+
+  prob_min = 1e-05
+  prob_max = 1 - prob_min
+  nc = dim(yy)
+  if (is.null(nc)) {
+    yy = as.factor(yy)
+    ntab = table(yy)
+    nc = as.integer(length(ntab))
+    yy = diag(nc)[as.numeric(yy), ]
+  }
+  N = nrow(yy)
+  nlambda=ncol(pred.matrix)
+  ywt = apply(yy, 1, sum)
+  yy = yy/ywt
+  N = nrow(yy) - apply(is.na(pred.matrix), 2, sum)
+  # mse = (yy[, 1] - (1 - pred.matrix))^2 + (yy[, 2] - pred.matrix)^2
+  # mae = abs(yy[, 1] - (1 - pred.matrix)) + abs(yy[, 2] - pred.matrix)
+  deviance = {pred.matrix = pmin(pmax(pred.matrix, prob_min), prob_max)
+  lp = yy[, 1] * log(1 - pred.matrix) + yy[, 2] * log(pred.matrix)
+  ly = log(yy)
+  ly[yy == 0] = 0
+  ly = drop((yy * ly) %*% c(1, 1))
+  2 * (ly - lp)
+  }
+  # class = yy[, 1] * (pred.matrix > 0.5) + yy[, 2] * (pred.matrix <= 0.5)
+
+  return(deviance)
+
+}
+
