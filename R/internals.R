@@ -102,7 +102,7 @@ hdps_pv <- function(E, C, D, k){
 
   #Pc1 and Pc0
   a <- E %*% C
-  PC1 <- t(a/Tot)
+  PC1 <- t(a/Tot_E) #error fixed on v0.2-1 09/2021
   PC0 <- t((Tot_C - a)/(Tot - Tot_E))
 
   #RRCD

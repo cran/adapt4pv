@@ -76,14 +76,14 @@ Intended for binary reponse only (option \code{family = "binomial"} is forced).
 Depends on the \code{glmnet} function from the package \code{glmnet}.
 }
 \details{
-The CISL procedureis first implemented with its default value except for
+The CISL procedure is first implemented with its default value except for
 \code{dfmax} and \code{nlambda} through parameters \code{cisl_dfmax} and
 \code{cisl_nlambda}.
 In addition, the \code{betaPos} parameter is set to FALSE in \code{cisl}.
 For each covariate \eqn{i}, \code{cisl_nB} values of the CISL quantity \eqn{\tau_i}
 are estimated.
 The adaptive weight for a given covariate \eqn{i} is defined by
-\deqn{w_i = 1- 1/cisl_nB \sum_{b=1, .., cisl_nB} 1 [ \tau^b_i >0  ]}
+\deqn{w_i = 1- 1/cisl_{nB} \sum_{b=1, .., cisl_{nB}} 1 [ \tau^b_i >0  ]}
 If \eqn{\tau_i} is the null vector, the associated adaptve weights in infinty.
 If \eqn{\tau_i} is always positive, rather than "forcing" the variable into
 the model, we set the corresponding adaptive weight to 1/\code{cisl_nB}.
