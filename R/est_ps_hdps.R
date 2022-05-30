@@ -66,7 +66,7 @@ est_ps_hdps <- function(idx_expo, x, y, keep_total = 20){
 
   # Estimation PS -----
   ps <- tryCatch(speedglm.wfit(y = as.vector(indic), X = cbind(1,x[,var]), family = binomial(), intercept = TRUE),error = function(e) NA)
-  if(class(ps) == "speedglm"){
+  if(inherits(ps, "speedglm")){
     ps <- predict_speedglm.wfit(speedglm = ps, newmatrix = x[, var])
     ps <- Matrix(ps)
   }else{

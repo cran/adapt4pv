@@ -110,7 +110,7 @@ ps_pond_one <- function(ps_est, y, weights_type = c("mw", "iptw") ,
                                 family = binomial(), intercept = TRUE, weights = as.numeric(poids)),error = function(e) NA)
 
 
-  if(class(res)=="speedglm"){
+  if(inherits(res,"speedglm")){
     pval.2sided <- as.numeric(as.character(summary(res)$coef["expo", "Pr(>|z|)"])) #pvaleur bilaterale
     pval.1sided <-  pnorm(summary(res)$coef["expo", "z value"], lower.tail = FALSE )
 

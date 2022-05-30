@@ -35,13 +35,14 @@
 summary_stat <- function(object, true_pos, q = 10){
 
   ## Test class ----
-  if(length(class(object))==1 && class(object)=="try-error"){
+  temp <- class(object)[1]
+  if(length(class(object))==1 && inherits(object, "try-error")){
     var <- character(0)
-  }else if(length(class(object))==1 && class(object) %in% c("log.lasso", "adaptive")){
+  }else if(length(class(object))==1 && inherits(object,c("log.lasso", "adaptive"))){
     var <- object$selected_variables
-  }else if(length(class(object))==3 && class(object)[1] == "ps"){
+  }else if(length(class(object))==3 && temp == "ps"){
     var <- object$selected_variables
-  }else if(length(class(object))==1 && class(object)=="cisl"){
+  }else if(length(class(object))==1 && inherits(object, "cisl")){
     if(!(q %in% c(5,10,15,20))) stop("invalid q value")
     tmp <- paste0("q",q)
     if(tmp=="q5") tmp <- "q05"

@@ -98,7 +98,7 @@ est_ps_bic <- function(idx_expo, x, penalty = rep(1,nvars-1), ...){
   modele <- tryCatch(speedglm.wfit(y = as.vector(indic), X = cbind(1,x[,var]), family = binomial(), intercept = TRUE),error = function(e) NA)
 
 
-  if(class(modele)=="speedglm"){
+  if(inherits(modele,"speedglm")){
     score <- predict_speedglm.wfit(speedglm = modele, newmatrix = x[, var])
     score <-  Matrix(score)
   }else{

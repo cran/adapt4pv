@@ -62,7 +62,7 @@ ps_adjust_one <- function(ps_est, y){
                                 family = binomial(), intercept = TRUE),
                   error = function(e) NA)
 
-  if(class(res) == "speedglm"){
+  if(inherits(res, "speedglm")){
     pval.2sided <- as.numeric(as.character(summary(res)$coef["expo", "Pr(>|z|)"])) # 2sided pvalue
     pval.1sided <-  pnorm(summary(res)$coef["expo", "z value"], lower.tail = FALSE )
 
