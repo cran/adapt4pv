@@ -1,4 +1,4 @@
-2bfe709b43e337af6a7cd74318fc4be2 *DESCRIPTION
+40cf002b7f4aca5282b43ec00197c9c2 *DESCRIPTION
 8e1218106e7565f2664d626bb605dd91 *NAMESPACE
 083df9c1e5b9400b77b8bb20b18aa4a2 *NEWS.md
 a61e758628f9a0e71b6829334d983b99 *R/adapt4pv-package.R
@@ -20,7 +20,7 @@ a8f9624005429ba02f68a14c51df6808 *R/lasso_perm.R
 df36fdeddf4b4a7d84e4602e66f89906 *R/ps_pond.R
 a9194905d641441ba8444e149924de78 *R/ps_pond_one.R
 e7a8570e351b75e56e09626610ee406e *R/summary_stat.R
-eecd301368af8afc445ef25bdbe372bf *build/partial.rdb
+cb4924f3573383fca290a0a8e2ca5294 *build/partial.rdb
 a640be0eceb04545c4f74491de982206 *data/ExamplePvData.RData
 deb8300f3d3e91bb303bf9f3e2e1d831 *man/adapt4pv-package.Rd
 1eb9ca8db334f38b757598c436349483 *man/adapt_bic.Rd

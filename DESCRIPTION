@@ -1,8 +1,8 @@
 Package: adapt4pv
 Type: Package
 Title: Adaptive Approaches for Signal Detection in Pharmacovigilance
-Version: 0.2-2
-Authors@R: c(person("Emeline", "Courtois", email = "emeline.courtois@inserm.fr", role = c("cre")),
+Version: 0.2-3
+Authors@R: c(person("Emeline", "Courtois", email = "courtoise@iarc.who.int", role = c("cre")),
              person("Ismaïl", "Ahmed", email = "ismail.ahmed@inserm.fr", role = c("aut")),
              person("Hervé", "Perdry", email = "herve.perdry@universite-paris-saclay.fr", role = c("ctb")))
 Depends: R (>= 3.6.0), Matrix (>= 1.0-6), glmnet (>= 3.0-2)
@@ -15,8 +15,8 @@ RoxygenNote: 7.0.2
 Author: Emeline Courtois [cre],
   Ismaïl Ahmed [aut],
   Hervé Perdry [ctb]
-Maintainer: Emeline Courtois <emeline.courtois@inserm.fr>
+Maintainer: Emeline Courtois <courtoise@iarc.who.int>
 NeedsCompilation: no
-Packaged: 2022-05-30 12:38:15 UTC; Emeline
+Packaged: 2023-05-30 07:26:33 UTC; emeli
 Repository: CRAN
-Date/Publication: 2022-05-30 18:30:15 UTC
+Date/Publication: 2023-05-30 10:50:13 UTC
